@@ -1,1 +1,8 @@
-# snake
+# Snake game
+This is a game of snake using the curses library. Pretty standard version of the game, move the snake around the area, avoid the walls and your own tail, but the trophies you try to eat make you grow a number of tiles equal to there value. Trophies disappear after a little while, so eat them before then.
+
+In terms of implementation, this version eschews standard collision detection and utilizes a great function of the curses library `mvinch()`, which checks the `chtype` in a  specific position on the terminal window. A `chtype` acts like a tile here, and contains information like color and character, so, while this implementation checks to see if the snake is crashing into "snake" or "wall" characters, the implementation could be modified to check for color or attributes (like bold or italic).
+
+Another difference between this and other implementations is this uses an array for the snake instead of a linked list. The win condition here is based on the snake getting to  a set length (dependent on the size of the terminal). So, knowing the max length and using `chtypes` for drawing at set positions, made an array seem like a natural fit. The tail resides at index 0 and, as the snake grows, the head position moves down the array. The tail position "erases" the snake tile `chtype` by placing a background tile `chtype` when the snake is not growing.
+
+The comments in the code are the ones requested by my professor at the time. It is over-commented, for sure. But if you are still having any truoble follwing along and have questions, please feel free to contact me. Have fun!
